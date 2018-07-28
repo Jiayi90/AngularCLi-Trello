@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  private board: Board;
+  public board: Board;
   constructor(private route: ActivatedRoute,
               private boardService: BoardService) {
     this.getBoard().subscribe(board => this.board = board);
