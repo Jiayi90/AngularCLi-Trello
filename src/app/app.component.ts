@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrelloAuthService } from './services/trello-auth.service';
-
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
