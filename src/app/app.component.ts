@@ -6,9 +6,9 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Trello';
 
   constructor() { }
 
   ngOnInit() { }
+
 }

@@ -15,11 +15,10 @@ export class PrivateGuard implements CanActivate {
    * I make sure that no visitor that has NO token is able to visit '/app/**' routes.
    * */
   canActivate(): boolean {
-      console.log('yo');
     if (this.trelloAuthService.getToken()) {
       return true;
     } else {
-      this.trelloAuthService.login();
+      this.router.navigate(['/login']);
       return false;
     }
   }

@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -14,6 +18,9 @@ import { TrelloAuthService } from './services/trello-auth.service';
 import { SetTokenComponent } from './set-token/set-token.component';
 import { PublicGuard } from './public.guard';
 import { PrivateGuard } from './private.guard';
+import { LoginComponent } from './login/login.component';
+import { MemberService } from './services/member.service';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
@@ -21,18 +28,25 @@ import { PrivateGuard } from './private.guard';
     AppComponent,
     BoardsComponent,
     BoardComponent,
-    SetTokenComponent
+    SetTokenComponent,
+    LoginComponent,
+    ToolbarComponent
   ],
   imports: [
     AppRoutingModule, // Übernimmt das Routing
     BrowserModule,
     BrowserAnimationsModule, // Für Animationen, wird für Materials benötigt
     HttpClientModule, // Für Rest Calls
-    MatCardModule // Materials Cars
+    MatCardModule, // Materials Cars
+    MatMenuModule, // Materials Navigation
+    MatIconModule, // Materials Icons
+    MatToolbarModule, // Materials Toolbar
+    MatButtonModule,
   ],
   providers: [ // Für Depenency Injection
     BoardService,
     TrelloAuthService,
+    MemberService,
     PrivateGuard,
     PublicGuard,
   ],
