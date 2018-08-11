@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TrelloAuthService } from './trello-auth.service';
 import { Observable } from '../../../node_modules/rxjs/Observable';
-import { Member } from './member';
+import { Member } from './models/member';
 
 @Injectable()
 export class MemberService {

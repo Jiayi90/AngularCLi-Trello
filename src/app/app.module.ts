@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -21,6 +23,7 @@ import { PrivateGuard } from './private.guard';
 import { LoginComponent } from './login/login.component';
 import { MemberService } from './services/member.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { CardService } from './services/card.service';
 
 
 @NgModule({
@@ -42,11 +45,14 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatIconModule, // Materials Icons
     MatToolbarModule, // Materials Toolbar
     MatButtonModule,
+    MatTabsModule,
+    MatListModule,
   ],
   providers: [ // Für Depenency Injection
     BoardService,
     TrelloAuthService,
     MemberService,
+    CardService,
     PrivateGuard,
     PublicGuard,
   ],
