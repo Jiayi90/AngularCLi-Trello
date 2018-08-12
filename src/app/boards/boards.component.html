@@ -1,3 +1,12 @@
-<mat-card [routerLink]="['board', board.id]" *ngFor="let board of boards">
-    <mat-card-title>{{board.name}}</mat-card-title>
-</mat-card>
+<mat-list>
+    <mat-list-item *ngFor="let board of boards">
+        <mat-icon matListIcon (click)="deleteBoard(board.id)">close</mat-icon>
+        <h3 matLine [routerLink]="['board', board.id]"> {{board.name}}</h3>
+    </mat-list-item>
+    <mat-list-item (click)="createNewBoard()">
+        <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+        </button>
+        Neues Board erstellen
+    </mat-list-item>
+</mat-list>

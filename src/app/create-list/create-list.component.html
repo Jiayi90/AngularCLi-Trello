@@ -1,0 +1,11 @@
+<mat-dialog-content>
+    <form class="form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Name der Liste" [(ngModel)]="newListName" name="listName">
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="createList()">Erstellen</button>
+    <button mat-raised-button (click)="closeDialog()">Abbrechen</button>
+  </mat-dialog-actions>

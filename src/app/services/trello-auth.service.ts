@@ -48,8 +48,12 @@ export class TrelloAuthService {
     this.loggedIn.next(true);
   }
 
-  public getActionUrl(url: string): string {
-    return `${this.prefix}${url}?key=${API_KEY}&token=${this.getToken()}`;
+  public getActionUrl(url: string, ids?: Map<string, string>): string {
+    let actionUrl = `${this.prefix}${url}?key=${API_KEY}&token=${this.getToken()}`;
+    if (ids) {
+      ids.forEach((value, key) => actionUrl += `&${key}=${value}`);
+    }
+    return actionUrl;
   }
 
 }

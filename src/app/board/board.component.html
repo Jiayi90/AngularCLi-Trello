@@ -1,19 +1,46 @@
 <h2>{{board?.name}}</h2>
 
 <mat-tab-group (selectedTabChange)="onTabChange($event)">
-    <mat-tab *ngFor="let list of lists" [label]="list.name">
-            <mat-card *ngFor="let card of tabCards" (click)="showCardDetails(card.id)">
-                <mat-card-header>
-                    <mat-card-title>
-                        {{card.name}}
-                    </mat-card-title>
-                </mat-card-header>
-                <img mat-card-sm-image
+    <mat-tab *ngFor="let list of lists">
+        <ng-template mat-tab-label>
+            {{list.name}}
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="archiveList(list.id)">
+                    <mat-icon>archive</mat-icon>
+                    <span>Archivieren</span>
+                </button>
+            </mat-menu>
+        </ng-template>
+        <mat-card *ngFor="let card of tabCards" (click)="showCardDetails(card.id)">
+            <mat-card-header>
+                <mat-card-title>
+                    {{card.name}}
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-sm-image
                 *ngIf="lastCardAttachment(card)"
                 [src]="lastCardAttachment(card).url"
                 [height]="lastCardAttachment(card).height"
                 [width]="lastCardAttachment(card).width"
             />  
-            </mat-card>
+        </mat-card>
+        <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <button mat-menu-item>
+                            <mat-icon>add</mat-icon>
+                            <span>Neue Card</span>
+                        </button>             
+                    </mat-card-title>
+                </mat-card-header>
+        </mat-card>
+    </mat-tab>
+    <mat-tab [disabled]="true" >
+        <ng-template mat-tab-label>
+            <button mat-mini-fab (click)="createNewList()">+</button>
+        </ng-template>
     </mat-tab>
 </mat-tab-group>

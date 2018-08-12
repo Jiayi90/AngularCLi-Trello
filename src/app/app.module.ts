@@ -9,8 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 import { AppComponent } from './app.component';
 import { BoardsComponent } from './boards/boards.component';
 import { BoardService } from './services/board.service';
@@ -24,6 +24,10 @@ import { LoginComponent } from './login/login.component';
 import { MemberService } from './services/member.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CardService } from './services/card.service';
+import { CreateBoardComponent } from './create-board/create-board.component';
+import { FormsModule } from '@angular/forms';
+import { ListService } from './services/list.service';
+import { CreateListComponent } from './create-list/create-list.component';
 
 
 @NgModule({
@@ -33,11 +37,14 @@ import { CardService } from './services/card.service';
     BoardComponent,
     SetTokenComponent,
     LoginComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CreateBoardComponent,
+    CreateListComponent
   ],
   imports: [
     AppRoutingModule, // Übernimmt das Routing
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule, // Für Animationen, wird für Materials benötigt
     HttpClientModule, // Für Rest Calls
     MatCardModule, // Materials Cars
@@ -47,6 +54,8 @@ import { CardService } from './services/card.service';
     MatButtonModule,
     MatTabsModule,
     MatListModule,
+    MatDialogModule,
+    MatInputModule,
   ],
   providers: [ // Für Depenency Injection
     BoardService,
@@ -55,6 +64,11 @@ import { CardService } from './services/card.service';
     CardService,
     PrivateGuard,
     PublicGuard,
+    ListService,
+  ],
+  entryComponents: [
+    CreateBoardComponent,
+    CreateListComponent
   ],
   bootstrap: [AppComponent]
 })
