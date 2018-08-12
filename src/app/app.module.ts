@@ -28,6 +28,8 @@ import { CreateBoardComponent } from './create-board/create-board.component';
 import { FormsModule } from '@angular/forms';
 import { ListService } from './services/list.service';
 import { CreateListComponent } from './create-list/create-list.component';
+import { ActionsComponent } from './actions/actions.component';
+import { ActionService } from './services/action.service';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { CreateListComponent } from './create-list/create-list.component';
     LoginComponent,
     ToolbarComponent,
     CreateBoardComponent,
-    CreateListComponent
+    CreateListComponent,
+    ActionsComponent
   ],
   imports: [
     AppRoutingModule, // Übernimmt das Routing
@@ -65,6 +68,7 @@ import { CreateListComponent } from './create-list/create-list.component';
     PrivateGuard,
     PublicGuard,
     ListService,
+    ActionService,
   ],
   entryComponents: [
     CreateBoardComponent,

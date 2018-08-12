@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <span>Trello NG</span>
   <button mat-flat-button *ngIf="loggedIn" (click)="navigateBoards()">Boards</button>
+  <button mat-flat-button *ngIf="loggedIn" (click)="navigateActions()">Aktivitäten</button>
   <span class="expander"></span>
   <button mat-mini-fab *ngIf="loggedIn" [matMenuTriggerFor]="memberMenu">{{initials}}</button>
 </mat-toolbar>

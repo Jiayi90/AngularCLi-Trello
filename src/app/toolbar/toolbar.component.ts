@@ -34,6 +34,10 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  navigateActions() {
+    this.router.navigate(['/actions']);
+  }
+
   memberInitials(): Observable<string> {
     return this.memberService.getMember().map(member => member.initials);
   }
