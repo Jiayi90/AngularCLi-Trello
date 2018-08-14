@@ -34,7 +34,7 @@ export class TrelloAuthService {
   assembleUrl(): string {
     const returnUrl = encodeURI((this.platformLocation as any).location.origin + '/set-token');
     // tslint:disable-next-line:max-line-length
-    return `https://trello.com/1/authorize?response_type=token&key=${API_KEY}&return_url=${returnUrl}&callback_method=fragment&scope=read%2Cwrite%2Caccount&expiration=never&name=Calendar+for+Trello`;
+    return `https://trello.com/1/authorize?response_type=token&key=${API_KEY}&return_url=${returnUrl}&callback_method=fragment&scope=read%2Cwrite%2Caccount&expiration=never&name=Trello+NG`;
   }
 
   async logout(): Promise<void> {

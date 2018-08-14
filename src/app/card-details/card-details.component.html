@@ -12,7 +12,7 @@
       <textarea  matInput placeholder="Beschreibung" [(ngModel)]="cardDesc" name="cardDesc"></textarea>
     </mat-form-field>
     <mat-form-field>
-        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="cardDue" name="cardDue">
+        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="cardDue" name="cardDue" placeholder="Frist">
         <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
         <mat-datepicker #myDatepicker></mat-datepicker>
     </mat-form-field>

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Board } from '../services/models/board';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
 import { Card } from '../services/models/card';
 import { List } from '../services/models/list';
 import { MatTabChangeEvent } from '@angular/material/tabs';
@@ -62,7 +63,12 @@ export class BoardComponent implements OnInit {
   }
 
   private getCardDetailsByListId(listId: string): Observable<CardDetails[]> {
-    return  Observable.combineLatest(this.cardsByListId(listId).map(card => this.cardService.getCardDetailsById(card.id)));
+    const cards = this.cardsByListId(listId);
+    if (cards.length > 0) {
+      return  Observable.combineLatest(cards.map(card => this.cardService.getCardDetailsById(card.id)));
+    } else {
+      return Observable.of([]);
+    }
   }
 
   private getLists(): Observable<any> {
