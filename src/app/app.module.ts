@@ -33,6 +33,7 @@ import { ActionService } from './services/action.service';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CalendarModule } from 'angular-calendar';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    CalendarModule.forRoot(),
   ],
   providers: [ // Für Depenency Injection
     BoardService,
