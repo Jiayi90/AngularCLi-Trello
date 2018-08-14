@@ -13,8 +13,7 @@ export class ActionsComponent implements OnInit {
 
   public viewDate: Date = new Date();
   public events: CalendarEvent[];
-
-  private activeDayIsOpen = true;
+  public activeDayIsOpen = true;
 
   constructor(private memberService: MemberService) { }
 
