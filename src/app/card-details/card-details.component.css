@@ -1,0 +1,36 @@
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  .details {
+      padding: 1em;
+  }
+
+@media (min-width: 576px) {
+    .details {
+        padding-left:50px;
+        padding-right:50px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .details {
+        padding-left:10%;
+        padding-right:10%;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .details {
+        padding-left:15%;
+        padding-right:15%;
+    }
+}

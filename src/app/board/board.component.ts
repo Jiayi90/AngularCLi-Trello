@@ -24,6 +24,8 @@ export class BoardComponent implements OnInit {
   public board: Board;
   public lists: List[];
   public tabCards: CardDetails[];
+  public creatingNewCard = false;
+  public newCardName;
 
   private cards: Card[];
 
@@ -40,7 +42,11 @@ export class BoardComponent implements OnInit {
         this.board = board;
         this.lists = lists;
         this.cards = cards;
-        this.getCardDetailsByListId(lists[0].id).subscribe(tabCards => this.tabCards = tabCards);
+        this.getListId().subscribe(listId => {
+          console.log(listId);
+          listId = listId || lists[0].id;
+          this.getCardDetailsByListId(listId).subscribe(tabCards => this.tabCards = tabCards);
+        });
       });
   }
 
@@ -67,18 +73,33 @@ export class BoardComponent implements OnInit {
     return this.route.params.map(params => params['id']);
   }
 
-  public cardsByListId(listId: string) {
-    return this.cards.filter(card => card.idList === listId);
+  private getListId(): Observable<string> {
+    return this.route.params.map(params => params['idList']);
   }
 
-  showCardDetails(id: string) {
-    this.cardService.getCardAttachmentsById(id).subscribe(console.log);
+  public cardsByListId(listId: string) {
+    return this.cards.filter(card => card.idList === listId);
   }
 
   onTabChange(event: MatTabChangeEvent) {
     const {index} = event;
     const idList = this.lists[index].id;
+    this.creatingNewCard = false;
     this.getCardDetailsByListId(idList).subscribe(cards => this.tabCards = cards);
+  }
+
+  createNewCard(idBoard) {
+    this.creatingNewCard = false;
+    this.cardService.createCard(idBoard, this.newCardName).subscribe(() => {
+      Observable.combineLatest(
+        this.getLists(),
+        this.getCards()).subscribe(result => {
+          const [lists, cards] = result;
+          this.lists = lists;
+          this.cards = cards;
+          this.getCardDetailsByListId(lists[0].id).subscribe(tabCards => this.tabCards = tabCards);
+        });
+    });
   }
 
   lastCardAttachment(card: CardDetails): AttachementPreview {

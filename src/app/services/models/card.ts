@@ -9,7 +9,7 @@ export class Card {
     dueComplete: boolean;
     id: string;
     idAttachmentCover: string;
-    idBord: string;
+    idBoard: string;
     idChecklists: any[];
     idLabels: any[];
     idList: string;

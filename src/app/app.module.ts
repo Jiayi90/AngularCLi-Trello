@@ -30,6 +30,9 @@ import { ListService } from './services/list.service';
 import { CreateListComponent } from './create-list/create-list.component';
 import { ActionsComponent } from './actions/actions.component';
 import { ActionService } from './services/action.service';
+import { CardDetailsComponent } from './card-details/card-details.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -42,7 +45,8 @@ import { ActionService } from './services/action.service';
     ToolbarComponent,
     CreateBoardComponent,
     CreateListComponent,
-    ActionsComponent
+    ActionsComponent,
+    CardDetailsComponent
   ],
   imports: [
     AppRoutingModule, // Übernimmt das Routing
@@ -59,6 +63,8 @@ import { ActionService } from './services/action.service';
     MatListModule,
     MatDialogModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [ // Für Depenency Injection
     BoardService,

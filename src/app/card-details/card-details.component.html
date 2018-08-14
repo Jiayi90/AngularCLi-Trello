@@ -1,0 +1,21 @@
+<button mat-menu-item [routerLink]="['/board', boardId, 'list', listId]">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    <span>Zurück</span>
+</button>
+<div class="details">
+
+  <form class="form">
+    <mat-form-field class="full-width">
+      <textarea  matInput placeholder="Name der Liste" [(ngModel)]="cardName" name="cardName"></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <textarea  matInput placeholder="Beschreibung" [(ngModel)]="cardDesc" name="cardDesc"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="cardDue" name="cardDue">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="editCard()">Ändern</button>
+  </form>
+</div>

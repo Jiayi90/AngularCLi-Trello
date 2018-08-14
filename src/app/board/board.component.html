@@ -14,7 +14,7 @@
                 </button>
             </mat-menu>
         </ng-template>
-        <mat-card *ngFor="let card of tabCards" (click)="showCardDetails(card.id)">
+        <mat-card class="card" *ngFor="let card of tabCards"  [routerLink]="['/card', card.id]">
             <mat-card-header>
                 <mat-card-title>
                     {{card.name}}
@@ -27,15 +27,28 @@
                 [width]="lastCardAttachment(card).width"
             />  
         </mat-card>
-        <mat-card>
+        <mat-card *ngIf="!creatingNewCard">
                 <mat-card-header>
                     <mat-card-title>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="creatingNewCard = true">
                             <mat-icon>add</mat-icon>
                             <span>Neue Card</span>
-                        </button>             
+                        </button>          
                     </mat-card-title>
                 </mat-card-header>
+        </mat-card>
+        <mat-card *ngIf="creatingNewCard">
+            <mat-card-header>
+                <mat-card-title>
+                    <mat-form-field>
+                        <input matInput placeholder="Titel" [(ngModel)]="newCardName" name="cardName"/>
+                    </mat-form-field>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="createNewCard(list.id)">Erstellen</button>
+                <button mat-raised-button (click)="creatingNewCard = falsee">Abbrechen</button>
+            </mat-card-actions>   
         </mat-card>
     </mat-tab>
     <mat-tab [disabled]="true" >
